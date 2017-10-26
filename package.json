@@ -1,0 +1,25 @@
+{
+  "name": "hanzo-ticketing-app",
+  "version": "1.0.0",
+  "description": "This demo app demonstrates how to integrate hanzo payment processing and analytics with picatic.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hanzo Inc",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanzoai/hanzo-ticketing-app.git"
+  },
+  "keywords": [
+    "hanzo",
+    "example",
+    "ecommerce",
+    "ticketing"
+  ],
+  "bugs": {
+    "url": "https://github.com/hanzoai/hanzo-ticketing-app/issues"
+  },
+  "homepage": "https://github.com/hanzoai/hanzo-ticketing-app#readme"
+}
