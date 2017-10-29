@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Hanzo Inc",
+  "author": "Hanzo Inc <hi@hanzo.ai>",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -21,5 +21,40 @@
   "bugs": {
     "url": "https://github.com/hanzoai/hanzo-ticketing-app/issues"
   },
-  "homepage": "https://github.com/hanzoai/hanzo-ticketing-app#readme"
+  "homepage": "https://github.com/hanzoai/hanzo-ticketing-app#readme",
+  "devDependencies": {
+    "autoprefixer": "7.1.2",
+    "bebop": "1.12.5",
+    "clean-css": "4.1.7",
+    "coffee-script": "1.12.7",
+    "css-mqpacker": "6.0.1",
+    "es-raf": "3.3.1",
+    "esmangle": "1.0.1",
+    "ie-love": "0.0.3",
+    "lost": "8.2.0",
+    "lost-stylus": "0.1.3",
+    "postcss-discard-comments": "4.0.0-rc.2",
+    "poststylus": "1.0.0",
+    "pug": "2.0.0-rc.3",
+    "reeeset": "0.0.8",
+    "rollup-analyzer": "1.0.2",
+    "rucksack-css": "1.0.2",
+    "rupture": "0.6.2",
+    "sake-bundle": "0.6.0",
+    "sake-cli": "0.5.21",
+    "sake-core": "1.5.1",
+    "sake-linked": "0.1.2",
+    "sake-outdated": "0.1.28",
+    "sake-publish": "0.1.16",
+    "sake-test": "0.1.5",
+    "sake-version": "0.1.19",
+    "stylus": "0.54.5"
+  },
+  "dependencies": {
+    "astley.js": "0.0.31",
+    "el.js": "2.1.31",
+    "handroll": "0.15.0",
+    "shop.js": "2.2.2",
+    "zepto-modules": "1.0.1"
+  }
 }

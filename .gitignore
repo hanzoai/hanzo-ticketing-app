@@ -1,0 +1,8 @@
+lib/
+coverage/
+node_modules/
+npm-debug.log
+public/js/app.js
+*.map
+.sake/
+
