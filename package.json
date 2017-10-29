@@ -54,7 +54,8 @@
     "astley.js": "0.0.31",
     "el.js": "2.1.31",
     "handroll": "0.15.0",
-    "shop.js": "2.2.2",
+    "moment": "2.19.1",
+    "shop.js": "2.2.9",
     "zepto-modules": "1.0.1"
   }
 }

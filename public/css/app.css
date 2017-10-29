@@ -2757,6 +2757,13 @@ checkout{
 checkout h3{
   margin:0;
 }
+checkout .part2 *{
+  margin-bottom:0.5rem;
+}
+checkout .part2 .address{
+  padding:0.5rem 1rem;
+  border:1px solid #fff;
+}
 cart{
   padding-left:0;
   padding-right:0;
@@ -2800,6 +2807,11 @@ header .logo-link{
 }
 .button.button.button{
   line-height:3rem;
+  width:100%;
+}
+:disabled{
+  -webkit-filter:grayscale(75%);
+          filter:grayscale(75%);
 }
 footer{
   background-color:#333;

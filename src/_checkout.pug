@@ -1,33 +1,42 @@
 checkout(data-analytics-ignore)
-  h3 Reserve your tickets today
-  user-email.input(label='Your Email', placeholder='your@email.com')
-  user-name.input(label='Your Name', placeholder='Your Name')
+  .part1(if='{ !checkedOut }')
+    h3 Reserve your tickets today
+    user-email.input(label='Your Email', placeholder='your@email.com')
+    user-name.input(label='Your Name', placeholder='Your Name')
 
-  cart
-    lineitems
-      .product-quantity-container
-        quantity-select.input
-      .product-text-container
-        strong.product-name
-          | { data.get('productName') }
-        .product-slug
-          | { data.get('productSlug') }
-        .product-description(if="{ data.get('description') }")
-          | { data.get('description') }
-    .total
-      .price
-        | { data.get('order.total') / 1e9 } ETH
-      strong.text
-        | TOTAL
+    cart
+      lineitems
+        .product-quantity-container
+          quantity-select.input
+        .product-text-container
+          strong.product-name
+            | { data.get('productName') }
+          .product-slug
+            | { data.get('productSlug') }
+          .product-description(if="{ data.get('description') }")
+            | { data.get('description') }
+      .total
+        .price
+          | { data.get('order.total') / 1e9 } ETH
+        strong.text
+          | TOTAL
 
-  terms.checkbox
-    label(for='terms')
-      | I have read and accept the&nbsp;
-      a(href='{ termsUrl }', target='_blank') terms and conditions
+    terms.checkbox
+      label(for='terms')
+        | I have read and accept the&nbsp;
+        a(href='{ termsUrl }', target='_blank') terms and conditions
+    button.button.important(
+      class='{ loading: loading || checkedOut }'
+      disabled='{ loading || checkedOut }'
+    ) CHECKOUT
+    .error(if='{ errorMessage }') { errorMessage }
 
-  .button.important(
-    class='{ loading: loading || checkedOut }'
-    disabled='{ loading || checkedOut }'
-    onclick='{ submit }'
-  ) CHECKOUT
-  .error(if='{ errorMessage }') { errorMessage }
+  .part2(if='{ checkedOut }')
+    h3 Send your ETH
+    p.instructions Send EXACTLY <strong>{ data.get('order.total') / 1e9 } ETH</strong> to this address:
+    .address { data.get('order.wallet.accounts.0.address')}
+    p
+      | This order will expire in { countdown() } hours.
+      br
+      | Contact support support@cryptounderground with your destination wallet for refunds of over or under payment
+
