@@ -56,3 +56,8 @@ task 'watch:js', 'watch js for changes and rebuild', ->
 
 task 'watch:static', 'watch static files and rebuild', ['build:static'], ->
   exec 'bebop'
+
+task 'start', 'start server', ->
+  exec '''
+    coffee ./server.coffee
+  '''
