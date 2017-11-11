@@ -7,9 +7,10 @@ axios      = require 'axios'
 app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
 
-port = process.env.PORT || 8080
+port = process.env.PORT || 80
 
 router = express.Router()
+
 router.post '/', (req, res)->
   ord = req.body
 
@@ -54,6 +55,7 @@ router.post '/', (req, res)->
   res.send ord
 
 app.use '/webhook', router
+app.use express.static('public')
 
-console.log 'Starting Server'
+console.log 'Starting Server on ' + port
 app.listen port
