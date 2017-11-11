@@ -15,7 +15,7 @@ router.post '/', (req, res)->
   payload = req.body
   accessToken = payload.accessToken
 
-  if accessToken == 'JReHjrvJSyHah4MCfZTmTbbtpefZRgruNfraMVURCzfkzWAj5hRzHWhqzKqWkAZH'
+  if accessToken != 'JReHjrvJSyHah4MCfZTmTbbtpefZRgruNfraMVURCzfkzWAj5hRzHWhqzKqWkAZH'
     console.log 'Invalid Token', accessToken
     return
 
