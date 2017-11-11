@@ -17,7 +17,7 @@ checkout(data-analytics-ignore)
             | { data.get('description') }
       .total
         .price
-          | { data.get('order.total') / 1e9 } ETH
+          | { (data.get('order.total') / 1e9).toFixed(2) } ETH
         strong.text
           | TOTAL
 

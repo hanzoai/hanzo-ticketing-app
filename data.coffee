@@ -119,11 +119,11 @@ module.exports =
             #   name: 'Support'
             #   url: 'https://docs.hanzo.io/discuss'
             # }
-            {
-              '@type': 'WebsiteMenu'
-              name: 'DONATE'
-              url: '/'
-            }
+            # {
+            #   '@type': 'WebsiteMenu'
+            #   name: 'DONATE'
+            #   url: '/'
+            # }
           ]
         }
       ]

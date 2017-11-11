@@ -15,9 +15,12 @@ requestAnimationFrame ->
 
   data = Shop.getData()
 
+  currentTicket = 'ticket20171114'
+
   m.on 'ready', ->
-    if !Shop.getItem('ticket20171031').quantity
-      Shop.setItem('ticket20171031', 1)
+    if !Shop.getItem(currentTicket).quantity
+      Shop.clear()
+      Shop.setItem(currentTicket, 1)
 
   m.on 'submit-success', (order)->
     data.set 'order', order
