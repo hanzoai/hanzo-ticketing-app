@@ -12,7 +12,14 @@ port = process.env.PORT || 80
 router = express.Router()
 
 router.post '/', (req, res)->
-  ord = req.body
+  payload = req.body
+  accessToken = payload.accessToken
+
+  if accessToken == 'JReHjrvJSyHah4MCfZTmTbbtpefZRgruNfraMVURCzfkzWAj5hRzHWhqzKqWkAZH'
+    console.log 'Invalid Token', accessToken
+    return
+
+  ord = payload.data
 
   console.log 'Receiving', req.body
 
