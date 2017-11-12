@@ -2743,6 +2743,10 @@ checkout-shippingaddress .stripe-logo{
 .input.input.input input::-webkit-input-placeholder{
   color:#fff;
 }
+.input.input.input option{
+  color:#333;
+  background-color:$backgroundColor2;
+}
 .checkbox.checkbox label{
   color:#fff;
   border-color:#fff;
