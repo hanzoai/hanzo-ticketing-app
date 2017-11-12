@@ -28,6 +28,16 @@ router.post '/', (req, res)->
   firstName = name.substr 0, split
   lastName  = name.substr split + 1
 
+  tickets = []
+
+  for item in ord.items
+    tickets.push
+      email:      ord.email ? ''
+      first_name: firstName ? ''
+      last_name:  lastName  ? ''
+      ticket_price:
+        ticket_price_id: 120658
+
   data =
     data:
       attributes:
@@ -36,15 +46,7 @@ router.post '/', (req, res)->
           email:      ord.email ? ''
           first_name: firstName ? ''
           last_name:  lastName  ? ''
-        tickets: [
-          {
-            email:      ord.email ? ''
-            first_name: firstName ? ''
-            last_name:  lastName  ? ''
-            ticket_price:
-              ticket_price_id: 120658
-          }
-        ]
+        tickets: tickets
       type: 'checkout'
 
   console.log 'Posting Checkout Data', JSON.stringify(data)
