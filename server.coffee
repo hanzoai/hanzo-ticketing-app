@@ -30,7 +30,12 @@ router.post '/', (req, res)->
 
   tickets = []
 
+  numTickets = 0
+
   for item in ord.items
+    numTickets += item.quantity
+
+  for i in [1...numTickets]
     tickets.push
       email:      ord.email ? ''
       first_name: firstName ? ''
