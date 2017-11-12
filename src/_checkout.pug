@@ -19,7 +19,7 @@ checkout(data-analytics-ignore)
 
     .payment.checkout-section(if="{ paymentSelected == 'stripe' }")
       .fields
-        card-number.input(name='number', label='Card Number')
+        card-number.input(name='number', label='Card Number', placeholder='XXXX-XXXX-XXXX-XXXX')
           div.cards-accepted
             img.card-logo.amex-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/amex.svg')
             img.card-logo.visa-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/visa.svg')
@@ -27,8 +27,8 @@ checkout(data-analytics-ignore)
             img.card-logo.jcb-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/jcb.svg')
             img.card-logo.mastercard-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/mastercard.svg')
       .fields
-        card-expiry.input(name='expiry', label='MM / YY')
-        card-cvc.input(name='cvc', label='CVC')
+        card-expiry.input(name='expiry', label='Expiration', placeholder='MM / YY')
+        card-cvc.input(name='cvc', label='CVC', placeholder='XXX')
 
     cart.ready
       lineitems
@@ -67,7 +67,7 @@ checkout(data-analytics-ignore)
       p
         | This order will expire in { countdown() } hours.
         br
-        | Contact support support@cryptounderground with your destination wallet for refunds of over or under payment
+        | Contact support Cryptounderground@gmail.com with your destination wallet for refunds of over or under payment
     .stripe-thankyou(if="{ data.get('order.type') == 'stripe' }")
       h3 Thanks for your support!
       p You should get your order confirmation and ticket shortly.

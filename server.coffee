@@ -4,10 +4,15 @@ app        = express()
 bodyParser = require 'body-parser'
 axios      = require 'axios'
 
+fs         = require 'fs'
+http       = require 'http'
+https      = require 'https'
+
 app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
 
-port = process.env.PORT || 80
+httpPort = process.env.PORT || 80
+httpsPort = 443
 
 router = express.Router()
 
@@ -77,5 +82,17 @@ router.post '/', (req, res)->
 app.use '/webhook', router
 app.use express.static('public')
 
-console.log 'Starting Server on ' + port
-app.listen port
+console.log 'Starting Server'
+
+options =
+  key: fs.readFileSync('./server.key'),
+  cert: fs.readFileSync('./server.crt'),
+  requestCert: false,
+  rejectUnauthorized: false
+
+http.createServer (req, res)->
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url })
+  res.end()
+.listen 80
+
+https.createServer(options, app).listen 443
