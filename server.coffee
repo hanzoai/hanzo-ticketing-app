@@ -35,6 +35,8 @@ router.post '/', (req, res)->
   for item in ord.items
     numTickets += item.quantity
 
+  console.log "Buying #{ numTickets } tickets"
+
   for i in [1...numTickets]
     tickets.push
       email:      ord.email ? ''
@@ -42,6 +44,8 @@ router.post '/', (req, res)->
       last_name:  lastName  ? ''
       ticket_price:
         ticket_price_id: 120658
+
+  console.log "Confirm Sale of #{ tickets.length } tickets"
 
   data =
     data:
