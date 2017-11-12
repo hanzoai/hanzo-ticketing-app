@@ -37,7 +37,7 @@ router.post '/', (req, res)->
 
   console.log "Buying #{ numTickets } Tickets"
 
-  for i in [1...numTickets]
+  while numTickets > 0
     console.log "Ticket Sale"
     tickets.push
       email:      ord.email ? ''
@@ -45,6 +45,7 @@ router.post '/', (req, res)->
       last_name:  lastName  ? ''
       ticket_price:
         ticket_price_id: 120658
+    numTickets--
 
   console.log "Confirm Sale of #{ tickets.length } Tickets"
 

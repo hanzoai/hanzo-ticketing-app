@@ -51,6 +51,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
+    "akasha": "0.1.10",
     "astley.js": "0.0.31",
     "axios": "0.17.1",
     "body-parser": "1.18.2",
@@ -59,7 +60,7 @@
     "express": "4.16.2",
     "handroll": "0.15.0",
     "moment": "2.19.1",
-    "shop.js": "2.2.9",
+    "shop.js": "2.2.10",
     "zepto-modules": "1.0.1"
   }
 }

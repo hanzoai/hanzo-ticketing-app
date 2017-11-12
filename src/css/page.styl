@@ -9,12 +9,20 @@ header
     height: $headerHeight
     line-height: $headerHeight
 
+  .mobile-menus
+    display: none
+
 // END Header
 
 // START Hero
 
 .hero
   height: 100vh
+
+  +below($phoneWidth)
+    height: auto
+    padding-bottom: 1rem
+    padding-top: 1rem
 
 // END Hero
 

@@ -1,10 +1,36 @@
 checkout(data-analytics-ignore)
-  .part1(if='{ !checkedOut }')
+  .part0(if='{ !paymentSelected }')
     h3 Reserve your tickets today
+
+    .payment-methods
+      .payment-instructions Select Your Payment Method:
+      .button.ethereum.payment-method(onclick='{ selectEth }')
+        img.icon(src='/img/eth.svg')
+        .name ETH
+      .button.stripe.payment-method(onclick='{ selectStripe }')
+        img.icon(src='/img/creditcard.svg')
+        .name Credit Card
+
+  .part1(if='{ paymentSelected && !checkedOut }')
+    h3 Reserve your tickets today
+
     user-email.input(label='Your Email', placeholder='your@email.com')
     user-name.input(label='Your Name', placeholder='Your Name')
 
-    cart
+    .payment.checkout-section(if="{ paymentSelected == 'stripe' }")
+      .fields
+        card-number.input(name='number', label='Card Number')
+          div.cards-accepted
+            img.card-logo.amex-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/amex.svg')
+            img.card-logo.visa-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/visa.svg')
+            img.card-logo.discover-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/discover.svg')
+            img.card-logo.jcb-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/jcb.svg')
+            img.card-logo.mastercard-logo(src='//cdn.jsdelivr.net/gh/hanzo-io/shop.js/img/card-logos/mastercard.svg')
+      .fields
+        card-expiry.input(name='expiry', label='MM / YY')
+        card-cvc.input(name='cvc', label='CVC')
+
+    cart.ready
       lineitems
         .product-quantity-container
           quantity-select.input
@@ -17,30 +43,33 @@ checkout(data-analytics-ignore)
             | { data.get('description') }
       .total
         .price
-          | { (data.get('order.total') / 1e9).toFixed(2) } ETH
+          | { renderCurrency(data.get('order.currency'), data.get('order.total')) } { data.get('order.currency').toUpperCase() }
         strong.text
           | TOTAL
-        small.usd-price(if='{ usdConversion }')
-          | &asymp; ${ (data.get('order.total') / 1e9 * usdConversion).toFixed(2) } USD
+        // small.usd-price(if='{ usdConversion }')
+        //   | &asymp; ${ (data.get('order.total') / 1e9 * usdConversion).toFixed(2) } USD
 
-    terms.checkbox
-      label(for='terms')
-        | I have read and accept the&nbsp;
-        a(href='{ termsUrl }', target='_blank') terms and conditions
+    // terms.checkbox
+    //   label(for='terms')
+    //     | I have read and accept the&nbsp;
+    //     a(href='{ termsUrl }', target='_blank') terms and conditions
     button.button.important(
       class='{ loading: loading || checkedOut }'
       disabled='{ loading || checkedOut }'
     ) CHECKOUT
     .error(if='{ errorMessage }') { errorMessage }
 
-  .part2(if='{ checkedOut }')
-    h3 Send your ETH
-    p.instructions Send EXACTLY <strong>{ data.get('order.total') / 1e9 } ETH</strong> to this address:
-    .address { data.get('order.wallet.accounts.0.address')}
-    p
-      | This order will expire in { countdown() } hours.
-      br
-      | Contact support support@cryptounderground with your destination wallet for refunds of over or under payment
+  .part2(if='{ paymentSelected && checkedOut }')
+    .eth-thankyou(if="{ data.get('order.type') == 'ethereum' }")
+      h3 Send your ETH
+      p.instructions Send EXACTLY <strong>{ data.get('order.total') / 1e9 } ETH</strong> to this address:
+      .address { data.get('order.wallet.accounts.0.address')}
+      p
+        | This order will expire in { countdown() } hours.
+        br
+        | Contact support support@cryptounderground with your destination wallet for refunds of over or under payment
+    .stripe-thankyou(if="{ data.get('order.type') == 'stripe' }")
+      h3 Thanks for your support!
+      p You should get your order confirmation and ticket shortly.
 
     // paywithmetamask
-

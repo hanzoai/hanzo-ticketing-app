@@ -2761,6 +2761,48 @@ checkout{
 checkout h3{
   margin:0;
 }
+checkout .part0 .payment-methods{
+  display:table;
+}
+checkout .part0 .payment-methods input{
+  display:none;
+}
+checkout .part0 .payment-methods .payment-method{
+  width:auto;
+  float:left;
+  padding:0 1rem;
+  margin:1rem 1rem 1rem 0;
+}
+checkout .part0 .payment-methods .payment-method *{
+  display:inline-block;
+  vertical-align:middle;
+}
+checkout .part0 .payment-methods .payment-method .icon{
+  height:1rem;
+}
+checkout .part1 card-expiry.input.input,
+checkout .part1 card-cvc.input.input{
+  width:calc(99.9% * 1/2 - (16px - 16px * 1/2));
+}
+checkout .part1 card-expiry.input.input:nth-child(1n),
+checkout .part1 card-cvc.input.input:nth-child(1n){
+  float:left;
+  margin-right:16px;
+  clear:none;
+}
+checkout .part1 card-expiry.input.input:last-child,
+checkout .part1 card-cvc.input.input:last-child{
+  margin-right:0;
+}
+checkout .part1 card-expiry.input.input:nth-child(2n),
+checkout .part1 card-cvc.input.input:nth-child(2n){
+  margin-right:0;
+  float:right;
+}
+checkout .part1 card-expiry.input.input:nth-child(2n + 1),
+checkout .part1 card-cvc.input.input:nth-child(2n + 1){
+  clear:both;
+}
 checkout .part2 *{
   margin-bottom:0.5rem;
 }
@@ -2808,6 +2850,9 @@ header .logo-link{
   display:inline-block;
   height:50px;
   line-height:50px;
+}
+header .mobile-menus{
+  display:none;
 }
 .hero{
   height:100vh;
@@ -2927,6 +2972,11 @@ footer .logo-link{
     -webkit-box-flex:initial;
             flex:initial;
   }
+  .hero{
+    height:auto;
+    padding-bottom:1rem;
+    padding-top:1rem;
+  }
   .hero .content.column1{
     margin-top:4rem;
   }
@@ -3008,5 +3058,8 @@ footer .logo-link{
   .checkout-content .checkout-form,
   .checkout-content cart{
     width:100%;
+  }
+  .hero .content.column1 h1{
+    display:none;
   }
 }/*# sourceMappingURL=app.css.map */
