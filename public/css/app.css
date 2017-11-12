@@ -2810,8 +2810,9 @@ header .logo-link{
   width:100%;
 }
 :disabled{
-  -webkit-filter:grayscale(75%);
-          filter:grayscale(75%);
+  -webkit-filter:grayscale(75%) !important;
+          filter:grayscale(75%) !important;
+  top:0 !important;
 }
 footer{
   background-color:#333;
