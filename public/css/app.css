@@ -2872,6 +2872,19 @@ footer{
 footer .logo-link{
   font-family:'Teko', sans-serif;
 }
+footer .logos{
+  width:100%;
+}
+footer .logos .logo-link:last-child{
+  float:right;
+  text-align:right;
+  -webkit-transform:translateY(-10px);
+          transform:translateY(-10px);
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+footer .logos .logo-link:last-child .logo-image{
+  height:40px;
+}
 .hero{
   color:#fff;
   text-shadow:2px 2px 1px rgba(0,0,0,0.3);

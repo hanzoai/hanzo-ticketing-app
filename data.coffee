@@ -191,12 +191,13 @@ module.exports =
           name: '© CRYPTO UNDERGROUND 2017'
           url: '/'
         }
-        # {
-        #   '@type': 'WebsiteLogo'
-        #   image: '/img/atechstars-dark.png'
-        #   alt: 'A Techstars Company'
-        #   url: 'http://www.techstars.com'
-        # }
+        {
+          '@type': 'WebsiteLogo'
+          image: 'http://hanzo.ai/img/logo.png'
+          alt: 'Powered By Hanzo'
+          name: 'Hanzo'
+          url: 'http://www.hanzo.ai'
+        }
       ]
       menuCollections: [
         # {
