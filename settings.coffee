@@ -1,7 +1,7 @@
 url = 'https://hanzo.io'
 
 description = """
-  Ticketing Example Using Hanzo and Picatic
+  Crypto Underground - The meetup for cryptocurrency traders, investors, hackers and enthusiasts
   """
 
 twitter =
@@ -14,8 +14,8 @@ facebook =
 
 module.exports =
   site:
-    title:     'Ticketing App'
-    name:      'Ticketing App'
+    title:     'Crypto Underground'
+    name:      'Crypto Underground'
     url:       url
     copyright: ''
 
@@ -23,15 +23,15 @@ module.exports =
     description: description
 
     facebook:
-      appid:       '1648878842071733'
+      # appid:       '1648878842071733'
       description: description
       # image:       'https://getshopjs.com/img/logo.png'
-      title:       'Get Ticketing App'
+      title:       'Crypto Underground'
 
     twitter:
       description: description
       # image:       'https://getshopjs.com/img/logo.png'
-      title:       'Get Ticketing App'
+      title:       'Crypto Underground'
 
   social:
     twitter:
