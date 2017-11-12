@@ -1,6 +1,7 @@
 import Shop   from 'shop.js/src'
 import $      from 'zepto-modules/_min'
 import moment from 'moment'
+import Xhr    from 'es-xhr-promise'
 
 import checkoutHtml from '../_checkout'
 
@@ -18,6 +19,14 @@ requestAnimationFrame ->
     currency: 'eth'
 
   data = Shop.getData()
+
+  (new Xhr).send(
+    url:    'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD'
+    method: 'get'
+  ).then (res) ->
+    data = (JSON.parse res.responseText)
+    window.usdConversion = data.USD
+    Shop.El.scheduleUpdate()
 
   currentTicket = 'ticket20171114'
 

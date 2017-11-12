@@ -2776,6 +2776,9 @@ cart lineitem{
 cart .total *{
   float:right;
 }
+cart .total .usd-price{
+  clear:both;
+}
 cart .total .text{
   margin-right:1rem;
 }

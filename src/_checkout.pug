@@ -20,6 +20,8 @@ checkout(data-analytics-ignore)
           | { (data.get('order.total') / 1e9).toFixed(2) } ETH
         strong.text
           | TOTAL
+        small.usd-price(if='{ usdConversion }')
+          | &asymp; ${ (data.get('order.total') / 1e9 * usdConversion).toFixed(2) } USD
 
     terms.checkbox
       label(for='terms')
@@ -39,4 +41,6 @@ checkout(data-analytics-ignore)
       | This order will expire in { countdown() } hours.
       br
       | Contact support support@cryptounderground with your destination wallet for refunds of over or under payment
+
+    // paywithmetamask
 
