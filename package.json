@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "akasha": "0.1.10",
-    "astley.js": "0.0.31",
+    "astley.js": "0.0.32",
     "axios": "0.17.1",
     "body-parser": "1.18.2",
     "el.js": "2.1.31",
