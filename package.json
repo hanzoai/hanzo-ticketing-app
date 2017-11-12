@@ -60,7 +60,7 @@
     "express": "4.16.2",
     "handroll": "0.15.0",
     "moment": "2.19.1",
-    "shop.js": "2.2.10",
+    "shop.js": "2.2.11",
     "zepto-modules": "1.0.1"
   }
 }
