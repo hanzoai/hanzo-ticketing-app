@@ -1,6 +1,6 @@
 import El from 'el.js'
 
-import metamaskHtml from '../_metamask'
+import metamaskHtml from './templates/_metamask'
 
 class PayWithMetaMask extends El.Form
   tag: 'paywithmetamask'

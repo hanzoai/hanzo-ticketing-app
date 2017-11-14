@@ -1,5 +1,8 @@
 import $ from 'zepto-modules/_min'
 
+# el.js classes need to be registered first
+import './copy'
+
 # astley needs to be executed before shop.js sequentially
 import './astley'
 import './shop'

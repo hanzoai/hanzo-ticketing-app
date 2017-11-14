@@ -31,6 +31,16 @@ block content
 
     .content#checkout
 
+  block.support
+    .content
+      h1 HELP SUPPORT OUR MEETUP!
+      p
+        | Your generous contributions go towards hosting speakers, reserving venues, and grow our community.
+      .eth-donation
+        p
+          | You can help by sending donations in ETH to&nbsp;
+        copybox.address(text='0xb710AE16efcc6aCe0416f1BE12149FC1D3B81189')
+
 block analytics
   script.
     !function(t,e,a){var r,n,c,i,o,s,l,u;if(null==t.analytics){for(r=[],r.methods=["ab","alias","group","identify","off","on","once","page","pageview","ready","track","trackClick","trackForm","trackLink","trackSubmit"],l=r.methods,c=function(t){r[t]=function(){var e;return e=Array.prototype.slice.call(arguments),e.unshift(t),r.push(e),r}},i=0,o=l.length;o>i;i++)s=l[i],c(s);return u=e.createElement("script"),u.async=!0,u.type="text/javascript",u.src=a,n=e.getElementsByTagName("script")[0],n.parentNode.insertBefore(u,n),t.analytics=r}}(window,document,"//cdn.hanzo.io/a/cryptounderground.js");

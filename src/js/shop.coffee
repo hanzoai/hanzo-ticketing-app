@@ -3,7 +3,7 @@ import $      from 'zepto-modules/_min'
 import moment from 'moment'
 import Xhr    from 'es-xhr-promise'
 
-import checkoutHtml from '../_checkout'
+import checkoutHtml from './templates/_checkout'
 
 # This has to be delayed and added at runtime due to astley
 $('#checkout').html checkoutHtml
@@ -61,8 +61,14 @@ requestAnimationFrame ->
       Shop.clear()
       Shop.setItem(currentTicket, 1)
 
+  orderAddress = ''
+
+  window.getOrderAddress = ()->
+    return orderAddress
+
   m.on 'submit-success', (order)->
     data.set 'order', order
+    orderAddress = data.get('order.wallet.accounts.0.address')
     Shop.El.scheduleUpdate()
 
     setInterval ()->

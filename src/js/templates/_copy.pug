@@ -1,0 +1,5 @@
+#{ 'yield' }
+  .copy-text(onclick='{ copy }')
+    | { getText() }
+  .copy-message(if='{ copied}')
+    | Copied!

@@ -2806,8 +2806,7 @@ checkout .part1 card-cvc.input.input:nth-child(2n + 1){
 checkout .part2 *{
   margin-bottom:0.5rem;
 }
-checkout .part2 .address{
-  padding:0.5rem 1rem;
+checkout .part2 copybox{
   border:1px solid #fff;
 }
 cart{
@@ -2827,6 +2826,14 @@ cart .total .usd-price{
 }
 cart .total .text{
   margin-right:1rem;
+}
+copybox{
+  padding:0.5rem 1rem;
+  border:1px solid #333;
+  font-size:0.8em;
+}
+copybox > *{
+  display:inline-block;
 }
 @-webkit-keyframes fade-out{
   0%{
@@ -2865,6 +2872,9 @@ header .mobile-menus{
   -webkit-filter:grayscale(75%) !important;
           filter:grayscale(75%) !important;
   top:0 !important;
+}
+copybox .copy-message{
+  color:#009688;
 }
 footer{
   background-color:#333;
@@ -2948,6 +2958,18 @@ footer .logos .logo-link:last-child .logo-image{
 }
 .hero #checkout .button{
   margin-top:0.5rem;
+}
+.support{
+  color:#333;
+}
+.support .content{
+  margin:3rem 0;
+}
+.support .content .eth-donation > *{
+  display:inline-block;
+}
+.support .content .eth-donation .address{
+  border:1px solid #333;
 }
 @media only screen and (min-width: 1001px){
   header,

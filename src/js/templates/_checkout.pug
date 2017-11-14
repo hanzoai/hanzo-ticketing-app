@@ -63,7 +63,7 @@ checkout(data-analytics-ignore)
     .eth-thankyou(if="{ data.get('order.type') == 'ethereum' }")
       h3 Send your ETH
       p.instructions Send EXACTLY <strong>{ data.get('order.total') / 1e9 } ETH</strong> to this address:
-      .address { data.get('order.wallet.accounts.0.address')}
+      copybox(text='{ getOrderAddress }')
       p
         | This order will expire in { countdown() } hours.
         br
