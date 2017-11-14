@@ -39,7 +39,7 @@ requestAnimationFrame ->
     window.paymentSelected = 'stripe'
     data.set 'order.type', 'stripe'
     data.set 'payment.type', 'stripe'
-    data.set 'order.items.0.price', 1750
+    data.set 'order.items.0.price', 2000
     data.set 'order.currency', 'usd'
     data.set 'order.storeId', 'petWngPySWWWp1'
     data.set 'user.storeId', 'petWngPySWWWp1'

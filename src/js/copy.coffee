@@ -51,5 +51,6 @@ export class CopyControl extends El.View
     @copied = true
 
     @scheduleUpdate()
+    return false
 
 CopyControl.register()
