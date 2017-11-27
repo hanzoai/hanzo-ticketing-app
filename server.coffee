@@ -2,6 +2,7 @@ express    = require 'express'
 app        = express()
 
 bodyParser = require 'body-parser'
+nocache    = require 'nocache'
 axios      = require 'axios'
 
 fs         = require 'fs'
@@ -10,6 +11,7 @@ https      = require 'https'
 
 app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
+app.use nocache()
 
 httpPort = process.env.PORT || 80
 httpsPort = 443
