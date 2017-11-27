@@ -49,7 +49,7 @@ router.post '/', (req, res)->
       first_name: firstName ? ''
       last_name:  lastName  ? ''
       ticket_price:
-        ticket_price_id: 120658
+        ticket_price_id: 124081
     numTickets--
 
   console.log "Confirm Sale of #{ tickets.length } Tickets"
@@ -57,7 +57,7 @@ router.post '/', (req, res)->
   data =
     data:
       attributes:
-        event_id: 134785
+        event_id: 138036
         invoice:
           email:      ord.email ? ''
           first_name: firstName ? ''

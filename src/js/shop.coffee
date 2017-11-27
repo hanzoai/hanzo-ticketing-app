@@ -54,7 +54,7 @@ requestAnimationFrame ->
   #   window.usdConversion = conversion.USD
   #   Shop.El.scheduleUpdate()
 
-  currentTicket = 'ticket20171114'
+  currentTicket = 'ticket20171128'
 
   m.on 'ready', ->
     if !Shop.getItem(currentTicket).quantity
