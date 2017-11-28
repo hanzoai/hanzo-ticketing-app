@@ -72,6 +72,8 @@ requestAnimationFrame ->
         data.set 'order.currency', 'eth'
         data.set 'order.storeId', ''
         data.set 'user.storeId', ''
+        Shop.cart.invoice()
+        Shop.El.scheduleUpdate()
       if window.paymentSelected == 'stripe'
         data.set 'order.type', 'stripe'
         data.set 'payment.type', 'stripe'
@@ -79,6 +81,8 @@ requestAnimationFrame ->
         data.set 'order.currency', 'usd'
         data.set 'order.storeId', 'petWngPySWWWp1'
         data.set 'user.storeId', 'petWngPySWWWp1'
+        Shop.cart.invoice()
+        Shop.El.scheduleUpdate()
     , 100
 
   orderAddress = ''
