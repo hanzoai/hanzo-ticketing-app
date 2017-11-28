@@ -37,7 +37,7 @@ requestAnimationFrame ->
 
   currentTicket = 'ticket20171128'
 
-  m.on 'ready', ->
+  m.on 'async-ready', ->
     if !Shop.getItem(currentTicket).quantity
       Shop.clear()
       Shop.setItem(currentTicket, 1)
