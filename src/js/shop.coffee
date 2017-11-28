@@ -33,6 +33,9 @@ requestAnimationFrame ->
     data.set 'order.storeId', ''
     data.set 'user.storeId', ''
     Shop.cart.invoice()
+    requestAnimationFrame ()->
+      Shop.cart.invoice()
+      Shop.El.scheduleUpdate()
     Shop.El.scheduleUpdate()
 
   window.selectStripe = ()->
@@ -44,6 +47,9 @@ requestAnimationFrame ->
     data.set 'order.storeId', 'petWngPySWWWp1'
     data.set 'user.storeId', 'petWngPySWWWp1'
     Shop.cart.invoice()
+    requestAnimationFrame ()->
+      Shop.cart.invoice()
+      Shop.El.scheduleUpdate()
     Shop.El.scheduleUpdate()
 
   # (new Xhr).send(
