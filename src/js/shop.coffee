@@ -25,32 +25,7 @@ requestAnimationFrame ->
   window.paymentSelected = ''
 
   window.selectEth = ()->
-    window.paymentSelected = 'eth'
-    data.set 'order.type', 'ethereum'
-    data.set 'payment.type', 'ethereum'
-    data.set 'order.items.0.price', 50000000
-    data.set 'order.currency', 'eth'
-    data.set 'order.storeId', ''
-    data.set 'user.storeId', ''
-    Shop.cart.invoice()
-    requestAnimationFrame ()->
-      Shop.cart.invoice()
-      Shop.El.scheduleUpdate()
-    Shop.El.scheduleUpdate()
-
   window.selectStripe = ()->
-    window.paymentSelected = 'stripe'
-    data.set 'order.type', 'stripe'
-    data.set 'payment.type', 'stripe'
-    data.set 'order.items.0.price', 2000
-    data.set 'order.currency', 'usd'
-    data.set 'order.storeId', 'petWngPySWWWp1'
-    data.set 'user.storeId', 'petWngPySWWWp1'
-    Shop.cart.invoice()
-    requestAnimationFrame ()->
-      Shop.cart.invoice()
-      Shop.El.scheduleUpdate()
-    Shop.El.scheduleUpdate()
 
   # (new Xhr).send(
   #   url:    'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD'
@@ -66,6 +41,34 @@ requestAnimationFrame ->
     if !Shop.getItem(currentTicket).quantity
       Shop.clear()
       Shop.setItem(currentTicket, 1)
+
+    window.selectEth = ()->
+      window.paymentSelected = 'eth'
+      data.set 'order.type', 'ethereum'
+      data.set 'payment.type', 'ethereum'
+      data.set 'order.items.0.price', 50000000
+      data.set 'order.currency', 'eth'
+      data.set 'order.storeId', ''
+      data.set 'user.storeId', ''
+      Shop.cart.invoice()
+      requestAnimationFrame ()->
+        Shop.cart.invoice()
+        Shop.El.scheduleUpdate()
+      Shop.El.scheduleUpdate()
+
+    window.selectStripe = ()->
+      window.paymentSelected = 'stripe'
+      data.set 'order.type', 'stripe'
+      data.set 'payment.type', 'stripe'
+      data.set 'order.items.0.price', 2000
+      data.set 'order.currency', 'usd'
+      data.set 'order.storeId', 'petWngPySWWWp1'
+      data.set 'user.storeId', 'petWngPySWWWp1'
+      Shop.cart.invoice()
+      requestAnimationFrame ()->
+        Shop.cart.invoice()
+        Shop.El.scheduleUpdate()
+      Shop.El.scheduleUpdate()
 
   orderAddress = ''
 
