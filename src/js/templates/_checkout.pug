@@ -4,10 +4,10 @@ checkout(data-analytics-ignore)
 
     .payment-methods
       .payment-instructions Select Your Payment Method:
-      .button.ethereum.payment-method(onclick='{ selectEth }')
+      a.button.ethereum.payment-method(href='/eth')
         img.icon(src='/img/eth.svg')
         .name ETH
-      .button.stripe.payment-method(onclick='{ selectStripe }')
+      a.button.stripe.payment-method(href='/credit')
         img.icon(src='/img/creditcard.svg')
         .name Credit Card
 

@@ -9,23 +9,33 @@ import checkoutHtml from './templates/_checkout'
 $('#checkout').html checkoutHtml
 
 requestAnimationFrame ->
+  window.paymentSelected = ''
+  storeId = null
+
+  # pick between eth and credit card
+  processor = ''
+  currency  = ''
+
+  if location.pathname == '/eth'
+    window.paymentSelected = 'eth'
+    processor = 'ethereum'
+    currency = 'eth'
+  else if location.pathname == '/credit'
+    window.paymentSelected = 'stripe'
+    processor = 'stripe'
+    currency = 'usd'
+
   m = Shop.start
     # test
     # key: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJiaXQiOjQ1MDM2MTcwNzU2NzUxNzYsImp0aSI6ImlKOXpkQ3RxNFNVIiwic3ViIjoicEdUUlJSeDlJQiJ9.J7uLpqjd4eBUYyWzRqhv2dzciKR_Lf5ETHpJeZ9_9vil-KRbEv0gLwKcLLxVrQRqW2ceFZfM5c6NLqAwncAJIw'
 
     # live
     key: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJiaXQiOjQ1MDM2MTcwNzU2NzUxNzIsImp0aSI6InJtcGJpLVNocW1BIiwic3ViIjoicEdUUlJSeDlJQiJ9.gGDFpgimwhoeUONSBLuYX_Arla23n0Iw2-V4qw7Iq0ZJU4IfX3Vy7Pruu2wTmMe0e1VGK3owZ0F73QNG-pwTGg'
-    processor: 'ethereum'
-    currency: 'eth'
+    processor: processor
+    currency:  currency
 
   data = Shop.getData()
   data.set 'terms', true
-
-  # pick between eth and credit card
-  window.paymentSelected = ''
-
-  window.selectEth = ()->
-  window.selectStripe = ()->
 
   # (new Xhr).send(
   #   url:    'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD'
@@ -37,53 +47,59 @@ requestAnimationFrame ->
 
   currentTicket = 'ticket20171128'
 
+  # brute force until commerce.js upgrade is ready
+  doEth = (item)->
+    if item?
+      item.price = 50000000
+      item.listPrice = 50000000
+
+    data.set 'order.type', 'ethereum'
+    data.set 'payment.type', 'ethereum'
+    data.set 'order.items.0.price', 50000000
+    data.set 'order.items.0.listPrice', 50000000
+    data.set 'order.items.0.productId', 'yjcA80jh111r2'
+    data.set 'order.items.0.productSlug', 'ticket20171128'
+    data.set 'order.items.0.productName', 'Meetup Ticket'
+    data.set 'order.currency', 'eth'
+    data.set 'order.storeId', ''
+    data.set 'user.storeId', ''
+
+  doStripe = (item)->
+    if item?
+      item.price = 2000
+      item.listPrice = 2000
+
+    data.set 'order.type', 'stripe'
+    data.set 'payment.type', 'stripe'
+    data.set 'order.items.0.price', 2000
+    data.set 'order.items.0.listPrice', 2000
+    data.set 'order.items.0.productId', 'yjcA80jh111r2'
+    data.set 'order.items.0.productSlug', 'ticket20171128'
+    data.set 'order.items.0.productName', 'Meetup Ticket'
+    data.set 'order.currency', 'usd'
+    data.set 'order.storeId', 'petWngPySWWWp1'
+    data.set 'user.storeId', 'petWngPySWWWp1'
+
+  forceUpdate = (item)->
+    if window.paymentSelected == 'eth'
+      doEth(item)
+    else if window.paymentSelected == 'stripe'
+      doStripe(item)
+    Shop.cart.invoice()
+    Shop.El.scheduleUpdate()
+
+  setInterval forceUpdate, 100
+
   m.on 'async-ready', ->
+    data.set 'order.currency', currency
+
     if !Shop.getItem(currentTicket).quantity
       Shop.clear()
       Shop.setItem(currentTicket, 1)
 
-    window.selectEth = ->
-      window.paymentSelected = 'eth'
-      data.set 'order.type', 'ethereum'
-      data.set 'payment.type', 'ethereum'
-      data.set 'order.items.0.price', 50000000
-      data.set 'order.currency', 'eth'
-      data.set 'order.storeId', ''
-      data.set 'user.storeId', ''
-      Shop.cart.invoice()
-      Shop.El.scheduleUpdate()
-
-    window.selectStripe = ->
-      window.paymentSelected = 'stripe'
-      data.set 'order.type', 'stripe'
-      data.set 'payment.type', 'stripe'
-      data.set 'order.items.0.price', 2000
-      data.set 'order.currency', 'usd'
-      data.set 'order.storeId', 'petWngPySWWWp1'
-      data.set 'user.storeId', 'petWngPySWWWp1'
-      Shop.cart.invoice()
-      Shop.El.scheduleUpdate()
-
-    setInterval ->
-      if window.paymentSelected == 'eth'
-        data.set 'order.type', 'ethereum'
-        data.set 'payment.type', 'ethereum'
-        data.set 'order.items.0.price', 50000000
-        data.set 'order.currency', 'eth'
-        data.set 'order.storeId', ''
-        data.set 'user.storeId', ''
-        Shop.cart.invoice()
-        Shop.El.scheduleUpdate()
-      if window.paymentSelected == 'stripe'
-        data.set 'order.type', 'stripe'
-        data.set 'payment.type', 'stripe'
-        data.set 'order.items.0.price', 2000
-        data.set 'order.currency', 'usd'
-        data.set 'order.storeId', 'petWngPySWWWp1'
-        data.set 'user.storeId', 'petWngPySWWWp1'
-        Shop.cart.invoice()
-        Shop.El.scheduleUpdate()
-    , 100
+  m.on 'update-item', (item)->
+    if item?
+      forceUpdate(item)
 
   orderAddress = ''
 
