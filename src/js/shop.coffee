@@ -16,11 +16,11 @@ requestAnimationFrame ->
   processor = ''
   currency  = ''
 
-  if location.pathname == '/eth'
+  if location.pathname.indexOf('/eth') == 0
     window.paymentSelected = 'eth'
     processor = 'ethereum'
     currency = 'eth'
-  else if location.pathname == '/credit'
+  else if location.pathname.indexOf('/credit') == 0
     window.paymentSelected = 'stripe'
     processor = 'stripe'
     currency = 'usd'
